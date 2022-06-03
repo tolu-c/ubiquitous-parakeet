@@ -10,6 +10,14 @@ const ACTIONS = {
 };
 
 const reducer = (state, action) => {
+  const newTask = (task) => {
+    return {
+      id: Date.now(),
+      task: task,
+      completed: false,
+    };
+  };
+
   // can be performed by switch or if blocks
   if (action.type === ACTIONS.ADD_TASK) {
     return [...state, newTask(action.payload.task)];
@@ -17,24 +25,32 @@ const reducer = (state, action) => {
   if (action.type === ACTIONS.REMOVE_TASK) {
     // some code
   }
+
   if (action.type === ACTIONS.TOGGLE_TASK) {
-    // some code
+    // console.log(state);
+    return state.map((todo) => {
+      if (todo.id === action.payload.id) {
+        return { ...todo, completed: !todo.completed };
+      } else {
+        return todo;
+      }
+    });
   }
 
   return state; // if none of the actions was called, return default state
 };
 
-const newTask = (task) => {
-  return {
-    id: Date.now(),
-    task: task,
-    completed: false,
-  };
-};
-
 const Todo = () => {
   const [task, setTask] = useState("");
   const [todoState, dispatchTodoAction] = useReducer(reducer, initialTodoState);
+
+  const toggleTask = (id) => {
+    // console.log(id);
+    dispatchTodoAction({
+      type: ACTIONS.TOGGLE_TASK,
+      payload: { id: id },
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,9 +62,11 @@ const Todo = () => {
     setTask(""); // clears input field after submission
   };
 
+  // console.log(todoState);
+
   return (
     <div>
-      <p>todo</p>
+      <p>Add Task</p>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -66,8 +84,13 @@ const Todo = () => {
       <ul>
         {todoState.map((todo) => (
           <li key={todo.id}>
-            <p>{todo.task}</p>
-            <button>completed</button> - <button>delete</button>
+            <p
+              style={{ textDecoration: todo.completed ? "underline" : "none" }}
+            >
+              {todo.task}
+            </p>
+            <button onClick={toggleTask(todo.id)}>completed</button> -{" "}
+            <button>delete</button>
           </li>
         ))}
       </ul>
