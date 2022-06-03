@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import Todo from "./Components/Todo";
 
 const initialCountState = {
   count: 0, // sets the initial value of count to 0
@@ -47,6 +48,12 @@ function App() {
       <button onClick={addCount}>+</button>
       <p>Count : {countState.count}</p>
       <button onClick={minusCount}>-</button>
+      <br />
+      <br />
+      <hr />
+      <br />
+      <br />
+      <Todo />
     </div>
   );
 }
