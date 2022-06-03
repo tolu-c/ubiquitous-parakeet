@@ -1,9 +1,10 @@
 import { useReducer, useState } from "react";
+import TaskItem from "./TaskItem";
 // import TodoForm from "./TodoForm";
 
 const initialTodoState = [];
 
-const ACTIONS = {
+export const ACTIONS = {
   ADD_TASK: "ADD_TASK",
   REMOVE_TASK: "REMOVE_TASK",
   TOGGLE_TASK: "TOGGLE_TASK",
@@ -22,19 +23,18 @@ const reducer = (state, action) => {
   if (action.type === ACTIONS.ADD_TASK) {
     return [...state, newTask(action.payload.task)];
   }
-  if (action.type === ACTIONS.REMOVE_TASK) {
-    // some code
-  }
 
   if (action.type === ACTIONS.TOGGLE_TASK) {
-    // console.log(state);
     return state.map((todo) => {
       if (todo.id === action.payload.id) {
         return { ...todo, completed: !todo.completed };
-      } else {
-        return todo;
       }
+      return todo;
     });
+  }
+
+  if (action.type === ACTIONS.REMOVE_TASK) {
+    // some code
   }
 
   return state; // if none of the actions was called, return default state
@@ -43,14 +43,6 @@ const reducer = (state, action) => {
 const Todo = () => {
   const [task, setTask] = useState("");
   const [todoState, dispatchTodoAction] = useReducer(reducer, initialTodoState);
-
-  const toggleTask = (id) => {
-    // console.log(id);
-    dispatchTodoAction({
-      type: ACTIONS.TOGGLE_TASK,
-      payload: { id: id },
-    });
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,8 +53,6 @@ const Todo = () => {
 
     setTask(""); // clears input field after submission
   };
-
-  // console.log(todoState);
 
   return (
     <div>
@@ -85,13 +75,25 @@ const Todo = () => {
         {todoState.map((todo) => (
           <li key={todo.id}>
             <p
-              style={{ textDecoration: todo.completed ? "underline" : "none" }}
+              style={{
+                textDecoration: todo.completed ? "line-through" : "none",
+              }}
             >
               {todo.task}
             </p>
-            <button onClick={toggleTask(todo.id)}>completed</button> -{" "}
-            <button>delete</button>
+            <button
+              onClick={() =>
+                dispatchTodoAction({
+                  type: ACTIONS.TOGGLE_TASK,
+                  payload: { id: todo.id },
+                })
+              }
+            >
+              completed
+            </button>{" "}
+            - <button>delete</button>
           </li>
+          // <TaskItem key={todo.id} todo={todo} dispatch={dispatchTodoAction} />
         ))}
       </ul>
     </div>
