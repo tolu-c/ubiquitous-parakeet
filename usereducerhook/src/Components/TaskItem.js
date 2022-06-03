@@ -1,9 +1,12 @@
 import { ACTIONS } from "./Todo";
 
 const TaskItem = ({ todo, dispatch }) => {
-  console.log(todo.id);
   const toggleTask = () => {
     dispatch({ type: ACTIONS.TOGGLE_TASK, payload: { id: todo.id } });
+  };
+
+  const deleteTask = () => {
+    dispatch({ type: ACTIONS.REMOVE_TASK, payload: { id: todo.id } });
   };
 
   return (
@@ -15,7 +18,8 @@ const TaskItem = ({ todo, dispatch }) => {
       >
         {todo.task} - {todo.id}
       </p>
-      <button onClick={toggleTask}>completed</button> - <button>delete</button>
+      <button onClick={toggleTask}>completed</button> -{" "}
+      <button onClick={deleteTask}>delete</button>
     </li>
   );
 };

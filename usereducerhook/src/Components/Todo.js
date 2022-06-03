@@ -34,7 +34,8 @@ const reducer = (state, action) => {
   }
 
   if (action.type === ACTIONS.REMOVE_TASK) {
-    // some code
+    // filters todo list to show items that are not the one to be removed(the item clicked on)
+    return state.filter((todo) => todo.id !== action.payload.id);
   }
 
   return state; // if none of the actions was called, return default state
@@ -73,27 +74,7 @@ const Todo = () => {
       {/* maps the todoState array to a list of todo items */}
       <ul>
         {todoState.map((todo) => (
-          <li key={todo.id}>
-            <p
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none",
-              }}
-            >
-              {todo.task}
-            </p>
-            <button
-              onClick={() =>
-                dispatchTodoAction({
-                  type: ACTIONS.TOGGLE_TASK,
-                  payload: { id: todo.id },
-                })
-              }
-            >
-              completed
-            </button>{" "}
-            - <button>delete</button>
-          </li>
-          // <TaskItem key={todo.id} todo={todo} dispatch={dispatchTodoAction} />
+          <TaskItem key={todo.id} todo={todo} dispatch={dispatchTodoAction} />
         ))}
       </ul>
     </div>
