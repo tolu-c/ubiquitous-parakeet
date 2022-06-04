@@ -8,7 +8,7 @@ const App = () => {
     setTimeout(() => {
       setCount(count + 1);
     }, 2000);
-  });
+  }, []);
 
   return (
     <div>
