@@ -2,17 +2,18 @@ import { useState, useEffect } from "react";
 
 const App = () => {
   const [count, setCount] = useState(0);
+  const [calculation, setCalculation] = useState(0);
 
   useEffect(() => {
-    // increment the count every 2 seconds
-    setTimeout(() => {
-      setCount(count + 1);
-    }, 2000);
-  }, []);
+    // calculate the product of the values of count by 2
+    setCalculation(count * 2);
+  }, [count]); // count becomes a dependency for the calculation to work
 
   return (
     <div>
-      <p>You have rendered {count} times.</p>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount((count) => count + 1)}>+</button>
+      <p>Calculation: {calculation}</p>
     </div>
   );
 };
