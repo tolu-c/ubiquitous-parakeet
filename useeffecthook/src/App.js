@@ -4,13 +4,15 @@ const App = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    document.title = `You clicked ${count} times`;
+    // increment the count every 2 seconds
+    setTimeout(() => {
+      setCount(count + 1);
+    }, 2000);
   });
 
   return (
     <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <p>You have rendered {count} times.</p>
     </div>
   );
 };
