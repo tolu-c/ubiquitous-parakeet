@@ -1,6 +1,9 @@
 import Card from "./ui/Card";
 
-const DataPreview = () => {
+const DataPreview = ({ savedData }) => {
+  console.log("from data preview");
+  console.log(savedData);
+
   return (
     <div>
       <h3>Preview Data from Data form</h3>
@@ -10,7 +13,10 @@ const DataPreview = () => {
             Name: <span className="text-gray-800 text-3xl">Tolu</span>
           </p>
           <p className="text-2xl capitalize font-bold text-gray-800/50">
-            email: <span className="text-blue-800 cursor-pointer underline lowercase text-3xl">email</span>
+            email:{" "}
+            <span className="text-blue-800 cursor-pointer underline lowercase text-3xl">
+              email
+            </span>
           </p>
         </div>
       </Card>
