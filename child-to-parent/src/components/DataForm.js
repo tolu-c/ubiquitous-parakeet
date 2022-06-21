@@ -1,20 +1,22 @@
 import { useState } from "react";
 
-const DataForm = ({  onAddData }) => {
+const DataForm = ({ onAddData }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    console.log("form submitted");
 
     const data = {
       enteredName: name,
       enteredEmail: email,
     };
     console.log(data);
+
     // passes the data object to parent component
     onAddData(data);
+
+    // clears form after submission
     setName("");
     setEmail("");
   };
