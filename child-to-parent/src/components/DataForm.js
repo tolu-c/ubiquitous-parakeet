@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const DataForm = ({ addData }) => {
+const DataForm = ({  onAddData }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -14,7 +14,7 @@ const DataForm = ({ addData }) => {
     };
     console.log(data);
     // passes the data object to parent component
-    addData(data);
+    onAddData(data);
     setName("");
     setEmail("");
   };
