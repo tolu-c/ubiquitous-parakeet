@@ -12,7 +12,6 @@ const DataForm = ({ onAddData }) => {
       enteredName: name,
       enteredEmail: email,
     };
-    console.log(data);
 
     // passes the data object to parent component
     onAddData(data);

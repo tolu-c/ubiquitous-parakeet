@@ -2,12 +2,15 @@ import DataForm from "./components/DataForm";
 import DataPreview from "./components/DataPreview";
 
 export default function App() {
+  const myData = [];
+
   const addData = (data) => {
     const enteredData = {
       ...data,
     };
     console.log("from app js");
-    console.log(enteredData);
+    myData.push(enteredData);
+    console.log(myData);
   };
 
   return (
