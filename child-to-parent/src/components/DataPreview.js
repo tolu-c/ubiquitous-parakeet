@@ -1,8 +1,8 @@
 import Card from "./ui/Card";
 
 const DataPreview = ({ savedData }) => {
-  console.log("from data preview");
-  console.log(savedData);
+  // console.log("from data preview");
+  // console.log(savedData);
 
   return (
     <div>
