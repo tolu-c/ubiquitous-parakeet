@@ -2,10 +2,6 @@ import DataPreviewItem from "./DataPreviewItem";
 import Card from "./ui/Card";
 
 const DataPreview = ({ savedData }) => {
-  // console.log("from data preview");
-  // console.log(savedData);
-  // console.log(savedData.map((item) => item.name));
-
   if (savedData.length === 0) {
     return (
       <Card>
