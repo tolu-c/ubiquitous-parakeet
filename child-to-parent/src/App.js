@@ -6,10 +6,10 @@ export default function App() {
   const [myData, setMyData] = useState([]);
 
   const addData = (data) => {
-    console.log(data);
+    // console.log(data);
     setMyData((prevData) => [data, ...prevData]);
 
-    console.log(myData);
+    // console.log(myData);
   };
 
   return (
