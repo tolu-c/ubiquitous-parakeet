@@ -1,27 +1,19 @@
+import { useRef } from "react";
+
 const Form = () => {
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log("Form submitted");
+  const nameRef = useRef();
+
+  const focusInput = () => {
+    nameRef.current.focus();
   };
 
   return (
     <div>
       <h2>Form</h2>
 
-      <form action="#" onSubmit={submitHandler}>
-        <div>
-          <label htmlFor="name">name</label>
-          <input type="text" name="name" id="name" />
-        </div>
-
-        <div>
-          <label htmlFor="email">email</label>
-          <input type="email" name="email" id="email" />
-        </div>
-
-        <div>
-          <button type="submit">submit</button>
-        </div>
+      <form action="#">
+        <input type="text" ref={nameRef} />
+        <button onClick={focusInput}>Focus Input</button>
       </form>
     </div>
   );
