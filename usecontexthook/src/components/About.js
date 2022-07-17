@@ -1,8 +1,11 @@
+import { Fragment } from "react";
 
 const About = () => {
   return (
-    <div>About</div>
-  )
+    <Fragment>
+      <h3>About Page</h3>
+    </Fragment>
+  );
 }
 
 export default About
