@@ -1,7 +1,18 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../store/auth-context";
+
 const LoginForm = () => {
+  const authCtx = useContext(AuthContext)
+  const login = authCtx.login
+  const navigate = useNavigate()
+
   const submitHandler = (event) => {
     event.preventDefault();
+    login()
+    navigate('/about')
   };
+
   return (
     <form
       onSubmit={submitHandler}
