@@ -1,4 +1,6 @@
 import { useState } from "react";
+
+// components
 import DataForm from "./components/DataForm";
 import DataPreview from "./components/DataPreview";
 
