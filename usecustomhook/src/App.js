@@ -1,25 +1,9 @@
-import { useEffect, useState } from "react";
+import useFetch from "./hooks/useFetch";
 
 export default function App() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("https://api.chucknorris.io/jokes/random")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => {
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  const { data, loading, error } = useFetch(
+    "https://api.chucknorris.io/jokes/random"
+  );
 
   if (loading) {
     return <p>Loading...</p>;
@@ -28,7 +12,6 @@ export default function App() {
     return <p>An error occurred! Pls try again</p>;
   }
 
-  console.log({ data });
   return (
     <div>
       <h2>React Custom Hook</h2>
