@@ -1,7 +1,11 @@
-import useFetch from "./hooks/useFetch";
+import useAxios from "./hooks/useAxios";
+// import useFetch from "./hooks/useFetch";
 
 export default function App() {
-  const { data, loading, error } = useFetch(
+  // const { data, loading, error } = useFetch(
+  //   "https://api.chucknorris.io/jokes/random"
+  // );
+  const { data, loading, error } = useAxios(
     "https://api.chucknorris.io/jokes/random"
   );
 
