@@ -33,14 +33,8 @@ export default function App() {
     <div>
       <h2>React Custom Hook</h2>
       {data && (
-        <div>
-          <img
-            src={data?.icon_url}
-            alt={data?.value}
-            width={300}
-            height={300}
-          />
-          <p>{data?.value}</p>
+        <div className="joke__box">
+          <p className="joke">{data?.value}</p>
         </div>
       )}
     </div>
