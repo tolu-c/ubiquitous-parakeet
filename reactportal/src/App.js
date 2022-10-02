@@ -5,7 +5,7 @@ const App = () => {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <div className="w-screen h-screen flex flex-col justify-center items-center relative">
+    <div className="w-screen h-screen flex flex-col justify-center items-center">
       <h2 className="text-3xl font-bold text-gray-900">React Portal</h2>
 
       {openModal ? (
